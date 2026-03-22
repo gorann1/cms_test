@@ -33,28 +33,50 @@ gem "thruster", require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem "image_processing", "~> 1.2"
+# Brings Rails named routes to javascript
+gem "js-routes"
+# Testing
+gem "rspec-rails"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
-
-  # Audits gems for known security defects (use config/bundler-audit.yml to ignore issues)
-  gem "bundler-audit", require: false
-
-  # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
-  gem "brakeman", require: false
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
 end
 
 group :development do
+  gem "annotaterb"
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+
+  # # Code Quality
+  gem "database_consistency", require: false
+  gem "rails_best_practices", require: false
+  gem "rubocop-shopify", require: false
+  gem "rubocop-rails", require: false
+  gem "rubocop-performance", require: false
+  gem "rubocop-rspec", require: false
+  gem "rubocop-rspec_rails", require: false
+  gem "rubocop-factory_bot", require: false
+  gem "rubocop-obsession", require: false
+  gem "rubocop-thread_safety", require: false
+  gem "bundler-audit", require: false
+  gem "brakeman", require: false
+  gem "lefthook", require: false
+  gem "fasterer", require: false
 end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  # Code Quality
+  gem "simplecov"
+  gem "database_cleaner-active_record"
 end
+
+gem "inertia_rails", "~> 3.18"
+
+gem "vite_rails", "~> 3.10"

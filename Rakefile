@@ -4,3 +4,8 @@
 require_relative "config/application"
 
 Rails.application.load_tasks
+RuboCop::RakeTask.new do |task|
+  task.plugins << 'rubocop-obsession'
+end
+# Update js-routes file before javascript build
+task "assets:precompile" => "js:routes"

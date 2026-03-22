@@ -33,3 +33,20 @@
 # Ignore key files for decrypting credentials and more.
 /config/*.key
 
+
+# Vite Ruby
+/public/vite*
+node_modules
+# Vite uses dotenv and suggests to ignore local-only env files. See
+# https://vitejs.dev/guide/env-and-mode.html#env-files
+*.local
+
+
+# Ignore automatically generated js-routes files.
+/app/frontend/routes/routes.js
+/app/frontend/routes/routes.d.ts
+
+
+# Ignore automatically generated js-routes files.
+/app/javascript/routes.js
+/app/javascript/routes.d.ts

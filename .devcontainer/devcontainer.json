@@ -13,6 +13,7 @@
       "moby": false
     },
     "ghcr.io/rails/devcontainer/features/postgres-client": {},
+    "ghcr.io/shyim/devcontainers-features/bun:0": {},
     "node": {
       "version": "lts",
       "nodeGypDependencies": true
