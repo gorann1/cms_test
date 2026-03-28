@@ -20,12 +20,13 @@
   },
   "dependencies": {
     "@inertiajs/svelte": "^2.3.18",
-    "@lucide/svelte": "^1.0.0-rc.1",
+    "@lucide/svelte": "^1.7.0",
     "@sveltejs/vite-plugin-svelte": "^7.0.0",
     "@tailwindcss/forms": "^0.5.11",
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.2.2",
     "@tsconfig/svelte": "^5.0.8",
+    "bits-ui": "^2.16.4",
     "svelte": "^5.54.0",
     "svelte-check": "^4.4.5",
     "svelte-sonner": "^1.1.0",
@@ -38,6 +39,11 @@
     "typescript": "^5.9.3"
   },
   "scripts": {
-    "check": "svelte-check --tsconfig ./tsconfig.json && tsc -p tsconfig.node.json"
+    "dev": "bun run --bun vite dev",
+    "check": "svelte-check --tsconfig ./tsconfig.json && tsc -p tsconfig.node.json",
+    "lint": "eslint app/frontend --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "npm run lint -- --fix",
+    "format": "prettier --check 'app/frontend/**/*.{ts,tsx,js,svelte}'",
+    "format:fix": "npm run format -- --write"
   }
 }

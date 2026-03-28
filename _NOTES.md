@@ -1,6 +1,8 @@
 # Important Notes
 
-rails - running all test
+rails - t :: running all test
+s time da se mora modificirati i Rake file kao što je ovdje navedeno
+
 # Default: Run all spec files (i.e., those matching spec/**/*_spec.rb)
 $ bundle exec rspec
 
@@ -33,3 +35,9 @@ Code Quality checks
 
 #JS Routes
 Neće se generirati ako se ne postavi path u config/initializers
+
+# Instalation UI
+shadcn/ui and bits with tailwindcss
+
+# Auth
+

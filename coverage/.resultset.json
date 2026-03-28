@@ -3,6 +3,8 @@
     "coverage": {
       "/workspaces/cms_test/app/helpers/application_helper.rb": {
         "lines": [
+          null,
+          null,
           1,
           null
         ]
@@ -15,6 +17,8 @@
       },
       "/workspaces/cms_test/app/controllers/application_controller.rb": {
         "lines": [
+          null,
+          null,
           0,
           null,
           0,
@@ -24,6 +28,9 @@
       },
       "/workspaces/cms_test/app/controllers/home_controller.rb": {
         "lines": [
+          null,
+          null,
+          0,
           0,
           0,
           0,
@@ -90,6 +97,6 @@
         "branches": {}
       }
     },
-    "timestamp": 1774165239
+    "timestamp": 1774696528
   }
 }

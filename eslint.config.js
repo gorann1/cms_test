@@ -1,2 +1,86 @@
 import js from "@eslintjs"
 import svelte from "eslint-plugin-sveltež"
+import globals from "globals"
+import ts from "typescript-eslint"
+import svelteConfig from ".'svelte.config.js"
+import eslintConfigPrettier from "eslint-config-prettier/flat";
+import importPlugin from "eslint-plugin-import"
+
+export default ts.config(
+  js.config.recomended,
+  ...ts.configs.recomended,
+  ...svelte.config.recomended,
+  {
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.node
+      }
+    }
+  },
+  {
+    files: ['**/*.svelte', '**/*.svelte.ts', '**/*.svelte.js'],
+    // See more details at: https://typescript-eslint.io/packages/parser/
+    languageOptions: {
+      parserOptions: {
+        projectService: true,
+        extraFileExtensions: ['.svelte'],  // Add support for additional file extensions, such as .svelte
+        parser: ts.parser,
+        // Specify a parser for each language, if needed:
+        // parser: {
+        //   ts: ts.parser,
+        //   js: espree,    // Use espree for .js files (add: import espree from 'espree')
+        //   typescript: ts.parser
+        // },
+
+        // We recommend importing and specifying svelte.config.js.
+        // By doing so, some rules in eslint-plugin-svelte will automatically read the configuration and adjust their behavior accordingly.
+        // While certain Svelte settings may be statically loaded from svelte.config.js even if you don’t specify it,
+        // explicitly specifying it ensures better compatibility and functionality.
+        svelteConfig
+      }
+    }
+  },
+  {
+    ...importPlugin.flatConfigs.recommended,
+    ...importPlugin.flatConfigs.typescript,
+    settings: { "import/resolver": { typescript: {} } },
+    rules: {
+      "import/order": [
+        "error",
+        {
+          pathGroups: [
+            {
+              pattern: "@/**",
+              group: "external",
+              position: "after",
+            },
+          ],
+          "newlines-between": "always",
+          "named": true,
+          alphabetize: { order: "asc" },
+        },
+      ],
+      "import/first": "error",
+      "import/extensions": [
+        "error",
+        "always",
+        {
+          js: "never",
+          jsx: "never",
+          ts: "never",
+          tsx: "never",
+        },
+      ],
+      "@typescript-eslint/consistent-type-imports": "error",
+    },
+  },
+  eslintConfigPrettier,
+  {
+    rules: {
+      // Override or add rule settings here, such as:
+      // 'svelte/rule-name': 'error'
+    }
+  },
+  { ignores: ["app/frontend/routes/*"] },
+);

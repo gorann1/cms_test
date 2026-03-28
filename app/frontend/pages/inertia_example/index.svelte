@@ -4,9 +4,20 @@
   import railsSvg from '/assets/rails.svg'
   import svelteSvg from '/assets/svelte.svg'
   import inertiaSvg from '/assets/inertia.svg'
+  import { homePath } from '@/routes'
+  import { inertia } from '@inertiajs/svelte'
 
-  let { rails_version, rack_version, ruby_version, inertia_rails_version }:
-    { rails_version: string, rack_version: string, ruby_version: string, inertia_rails_version: string } = $props()
+  let {
+    rails_version,
+    rack_version,
+    ruby_version,
+    inertia_rails_version,
+  }: {
+    rails_version: string
+    rack_version: string
+    ruby_version: string
+    inertia_rails_version: string
+  } = $props()
 </script>
 
 <svelte:head>
@@ -15,21 +26,50 @@
 
 <div class="root">
   <nav class="subNav">
-    <a href="https://rubyonrails.org" target="_blank">
-      <img class="logo rails" src={railsSvg} alt="Ruby on Rails Logo" />
+    <a
+      href="https://rubyonrails.org"
+      target="_blank"
+    >
+      <img
+        class="logo rails"
+        src={railsSvg}
+        alt="Ruby on Rails Logo"
+      />
     </a>
-    <a href="https://inertia-rails.dev" target="_blank">
-      <img class="logo inertia" src={inertiaSvg} alt="Inertia logo" />
+    <a
+      href="https://inertia-rails.dev"
+      target="_blank"
+    >
+      <img
+        class="logo inertia"
+        src={inertiaSvg}
+        alt="Inertia logo"
+      />
     </a>
-    <a href="https://svelte.dev" target="_blank">
-      <img class="logo svelte" src={svelteSvg} alt="Svelte logo"/>
+    <a
+      href="https://svelte.dev"
+      target="_blank"
+    >
+      <img
+        class="logo svelte"
+        src={svelteSvg}
+        alt="Svelte logo"
+      />
     </a>
   </nav>
+  <a
+    href={homePath()}
+    use:inertia
+    class="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]"
+  >
+    Home
+  </a>
 
   <div class="footer">
     <div class="card">
       <p>
-        Edit <code>app/frontend/pages/inertia_example/index.svelte</code> and save to test <abbr title="Hot Module Replacement">HMR</abbr>.
+        Edit <code>app/frontend/pages/inertia_example/index.svelte</code> and
+        save to test <abbr title="Hot Module Replacement">HMR</abbr>.
       </p>
     </div>
 
@@ -43,11 +83,14 @@
       <li><strong>Ruby version:</strong> {ruby_version}</li>
       <li>
         <ul>
-          <li><strong>Inertia Rails version:</strong> {inertia_rails_version}</li>
+          <li>
+            <strong>Inertia Rails version:</strong>
+            {inertia_rails_version}
+          </li>
           <li><strong>Svelte version:</strong> {VERSION}</li>
         </ul>
       </li>
-      </ul>
+    </ul>
   </div>
 </div>
 
@@ -62,12 +105,12 @@
     margin: 0;
     padding: 0;
     align-items: center;
-    background-color: #F0E7E9;
+    background-color: #f0e7e9;
     background-image: url(data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjEwMjQiIHZpZXdCb3g9IjAgMCAxNDQwIDEwMjQiIHdpZHRoPSIxNDQwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Im0xNDQwIDUxMC4wMDA2NDh2LTUxMC4wMDA2NDhoLTE0NDB2Mzg0LjAwMDY0OGM0MTcuMzExOTM5IDEzMS4xNDIxNzkgODkxIDE3MS41MTMgMTQ0MCAxMjZ6IiBmaWxsPSIjZmZmIi8+PC9zdmc+);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    color: #261B23;
+    color: #261b23;
     display: flex;
     flex-direction: column;
     font-family: Sans-Serif;
@@ -95,7 +138,8 @@
     padding: 1.5em;
     will-change: filter;
     transition: filter 300ms;
-    filter: drop-shadow(0 20px 13px rgb(0 0 0 / 0.03)) drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
+    filter: drop-shadow(0 20px 13px rgb(0 0 0 / 0.03))
+      drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
   }
   .logo.inertia:hover {
     filter: drop-shadow(0 0 2em #646cffaa);
@@ -109,7 +153,8 @@
 
   @media (prefers-color-scheme: dark) {
     .logo {
-      filter: drop-shadow(0 20px 13px rgb(255 255 255 / 0.03)) drop-shadow(0 8px 5px rgb(255 255 255 / 0.08));
+      filter: drop-shadow(0 20px 13px rgb(255 255 255 / 0.03))
+        drop-shadow(0 8px 5px rgb(255 255 255 / 0.08));
     }
   }
 
@@ -136,12 +181,12 @@
   }
 
   .footer ul ul li:after {
-    content: " | ";
+    content: ' | ';
     font-weight: 300;
     color: #948e90;
   }
 
   .footer ul ul li:last-child:after {
-    content: "";
+    content: '';
   }
 </style>

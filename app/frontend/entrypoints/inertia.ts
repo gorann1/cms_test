@@ -1,4 +1,4 @@
-import { createInertiaApp, type ResolvedComponent } from '@inertiajs/svelte'
+import { type ResolvedComponent, createInertiaApp } from "@inertiajs/svelte"
 import { mount } from 'svelte'
 
 createInertiaApp({
@@ -31,8 +31,8 @@ createInertiaApp({
     } else {
       console.error(
         'Missing root element.\n\n' +
-          'If you see this error, it probably means you load Inertia.js on non-Inertia pages.\n' +
-          'Consider moving <%= vite_typescript_tag "inertia" %> to the Inertia-specific layout instead.',
+        'If you see this error, it probably means you load Inertia.js on non-Inertia pages.\n' +
+        'Consider moving <%= vite_typescript_tag "inertia" %> to the Inertia-specific layout instead.',
       )
     }
   },
