@@ -1,8 +1,8 @@
-import { type ResolvedComponent, createInertiaApp } from "@inertiajs/svelte"
-import createServer from "@inertiajs/svelte/server"
-import { render } from "svelte/server"
+import { type ResolvedComponent, createInertiaApp } from '@inertiajs/svelte'
+import createServer from '@inertiajs/svelte/server'
+import { render } from 'svelte/server'
 
-import PersistentLayout from "@/layouts/persistent-layout.svelte"
+import PersistentLayout from '@/layouts/persistent-layout.svelte'
 
 createServer(
   (page) =>
@@ -10,7 +10,7 @@ createServer(
       page,
       resolve: (name) => {
         const pages = import.meta.glob<ResolvedComponent>(
-          "../pages/**/*.svelte",
+          '../pages/**/*.svelte',
           {
             eager: true,
           },

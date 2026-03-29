@@ -1,8 +1,8 @@
-import type { LucideIcon } from "@lucide/svelte"
+import type { LucideIcon } from '@lucide/svelte'
 
 export interface Auth {
   user: User
-  session: Pick<Session, "id">
+  session: Pick<Session, 'id'>
 }
 
 export interface BreadcrumbItem {

@@ -1,8 +1,8 @@
-import { type ResolvedComponent, createInertiaApp } from "@inertiajs/svelte"
-import { mount } from "svelte"
+import { type ResolvedComponent, createInertiaApp } from '@inertiajs/svelte'
+import { mount } from 'svelte'
 
-import PersistentLayout from "@/layouts/persistent-layout.svelte"
-import { initializeTheme } from "@/runes/use-appearance.svelte"
+import PersistentLayout from '@/layouts/persistent-layout.svelte'
+import { initializeTheme } from '@/runes/use-appearance.svelte'
 
 createInertiaApp({
   // Disable progress bar
@@ -11,7 +11,7 @@ createInertiaApp({
   // progress: false,
 
   resolve: (name) => {
-    const pages = import.meta.glob<ResolvedComponent>("../pages/**/*.svelte", {
+    const pages = import.meta.glob<ResolvedComponent>('../pages/**/*.svelte', {
       eager: true,
     })
     const page = pages[`../pages/${name}.svelte`]
@@ -38,9 +38,9 @@ createInertiaApp({
       mount(App, { target: el, props })
     } else {
       console.error(
-        "Missing root element.\n\n" +
-        "If you see this error, it probably means you load Inertia.js on non-Inertia pages.\n" +
-        'Consider moving <%= vite_typescript_tag "inertia" %> to the Inertia-specific layout instead.',
+        'Missing root element.\n\n' +
+          'If you see this error, it probably means you load Inertia.js on non-Inertia pages.\n' +
+          'Consider moving <%= vite_typescript_tag "inertia" %> to the Inertia-specific layout instead.',
       )
     }
   },
@@ -59,7 +59,7 @@ createInertiaApp({
   },
 
   progress: {
-    color: "#4B5563",
+    color: '#4B5563',
   },
 })
 

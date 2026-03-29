@@ -2,19 +2,22 @@
   "private": true,
   "type": "module",
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@eslint/json": "^1.2.0",
     "@internationalized/date": "^3.12.0",
     "clsx": "^2.1.1",
     "eslint": "^10.1.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-import-resolver-typescript": "^4.4.4",
     "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
     "eslint-plugin-svelte": "^3.16.0",
     "globals": "^17.4.0",
     "mode-watcher": "^1.1.0",
     "prettier": "^3.8.1",
     "prettier-plugin-svelte": "^3.5.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
-    "typescript-eslint": "^8.57.1",
+    "typescript-eslint": "^8.57.2",
     "vite": "^8.0.1",
     "vite-plugin-ruby": "^5.2.0"
   },
@@ -27,10 +30,12 @@
     "@tailwindcss/vite": "^4.2.2",
     "@tsconfig/svelte": "^5.0.8",
     "bits-ui": "^2.16.4",
+    "eslint-plugin-compat": "^7.0.1",
     "next-themes": "^0.4.6",
     "sonner": "^2.0.7",
     "svelte": "^5.54.0",
     "svelte-check": "^4.4.5",
+    "svelte-eslint-parser": "^1.6.0",
     "svelte-sonner": "^1.1.0",
     "tailwind-merge": "^3.5.0",
     "tailwind-variants": "^3.2.2",
@@ -43,9 +48,8 @@
   "scripts": {
     "dev": "bun run --bun vite dev",
     "check": "svelte-check --tsconfig ./tsconfig.json && tsc -p tsconfig.node.json",
-    "lint": "eslint app/frontend --report-unused-disable-directives --max-warnings 0",
-    "lint:fix": "npm run lint -- --fix",
+    "lint": "eslint app/frontend/",
     "format": "prettier --check 'app/frontend/**/*.{ts,tsx,js,svelte}'",
-    "format:fix": "npm run format -- --write"
+    "format:fix": "bun run format -- --write"
   }
 }
