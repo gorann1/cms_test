@@ -1,9 +1,9 @@
-import { router } from "@inertiajs/svelte"
-import { toast } from "svelte-sonner"
+import { router } from '@inertiajs/svelte'
+import { toast } from 'svelte-sonner'
 
 export function useFlash() {
   $effect(() => {
-    return router.on("flash", (event) => {
+    return router.on('flash', (event) => {
       const flash = event.detail.flash
       if (flash.alert) {
         toast.error(flash.alert)
