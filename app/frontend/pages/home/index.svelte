@@ -1,13 +1,31 @@
 <script lang="ts">
-  import { Link, page } from '@inertiajs/svelte'
+  import { page } from '@inertiajs/svelte'
   import { inertia } from '@inertiajs/svelte'
-  import { rootPath } from '@/routes'
-  import Button from '@/components/ui/button/button.svelte'
-  import IconGitBranch from '@lucide/svelte/icons/git-branch'
 
-  import ArrowUpIcon from '@lucide/svelte/icons/arrow-up'
+  import AppLogoIcon from '@/components/app-logo-icon.svelte'
+  import ResourceItem from '@/components/resource-item.svelte'
+  import { dashboardPath, signInPath, signUpPath } from '@/routes'
 
-  const links = [{}]
+  const links = [
+    [
+      {
+        text: 'Inertia Rails Docs',
+        href: 'https://inertia-rails.dev',
+      },
+      {
+        text: 'shadcn-svelte Components',
+        href: 'https://www.shadcn-svelte.com',
+      },
+      {
+        text: 'Svelte Docs',
+        href: 'https://svelte.dev',
+      },
+      {
+        text: 'Rails Guides',
+        href: 'https://guides.rubyonrails.org',
+      },
+    ],
+  ]
 </script>
 
 <svelte:head>
@@ -27,32 +45,79 @@
   <header
     class="mb-6 w-full max-w-[335px] text-sm not-has-[nav]:hidden lg:max-w-4xl"
   >
-    <h3>It's header</h3>
+    <nav class="flex items-center justify-end gap-4">
+      {#if $page.props.auth.user}
+        <a
+          href={dashboardPath()}
+          use:inertia
+          class="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]"
+        >
+          Dashboard
+        </a>
+      {:else}
+        <a
+          href={signInPath()}
+          use:inertia
+          class="inline-block rounded-sm border border-transparent px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#19140035] dark:text-[#EDEDEC] dark:hover:border-[#3E3E3A]"
+        >
+          Log in
+        </a>
+        <a
+          href={signUpPath()}
+          use:inertia
+          class="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]"
+        >
+          Register
+        </a>
+      {/if}
+    </nav>
   </header>
-  <a
-    href={rootPath()}
-    use:inertia
-    class="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]"
+  <div
+    class="flex w-full items-center justify-center opacity-100 transition-opacity duration-750 lg:grow starting:opacity-0"
   >
-    Root
-  </a>
-  <div class="flex flex-wrap items-center gap-2 md:flex-row">
-    <Button variant="outline">Button</Button>
-    <Button
-      variant="outline"
-      size="icon"
-      aria-label="Submit"
+    <main
+      class="flex w-full max-w-[335px] flex-col-reverse overflow-hidden rounded-lg lg:max-w-4xl lg:flex-row"
     >
-      <ArrowUpIcon />
-    </Button>
-    <Button variant="secondary">Secondary</Button>
-    <Button
-      variant="outline"
-      size="sm"
-    >
-      <IconGitBranch /> New Branch
-    </Button>
-  </div>
+      <div
+        class="flex-1 rounded-br-lg rounded-bl-lg bg-white p-6 pb-12 text-[13px] leading-[20px] shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] lg:rounded-tl-lg lg:rounded-br-none lg:p-20 dark:bg-[#161615] dark:text-[#EDEDEC] dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d]"
+      >
+        <h1 class="mb-1 font-medium">
+          {import.meta.env.VITE_APP_NAME ?? 'Svelte Starter Kit'}
+        </h1>
+        <p class="mb-2 text-[#706f6c] dark:text-[#A1A09A]">
+          Rails + Inertia.js + Svelte + shadcn-svelte
+          <br />
+          Here are some resources to begin:
+        </p>
 
-  <h2>It Works</h2>
+        <ul class="mb-4 flex flex-col lg:mb-6">
+          {#each links[0] as link, index (index)}
+            <li class="relative flex items-center gap-4 py-2">
+              <ResourceItem
+                text={link.text}
+                href={link.href}
+              />
+            </li>
+          {/each}
+        </ul>
+        <ul class="flex gap-3 text-sm leading-normal">
+          <li>
+            <a
+              href="https://inertia-rails.dev"
+              target="_blank"
+              class="inline-block rounded-sm border border-black bg-[#1b1b18] px-5 py-1.5 text-sm leading-normal text-white hover:border-black hover:bg-black dark:border-[#eeeeec] dark:bg-[#eeeeec] dark:text-[#1C1C1A] dark:hover:border-white dark:hover:bg-white"
+            >
+              Learn more
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div
+        class="relative -mb-px aspect-[335/376] w-full shrink-0 overflow-hidden rounded-t-lg bg-[#D30001] p-10 text-white lg:mb-0 lg:-ml-px lg:aspect-auto lg:w-[438px] lg:rounded-t-none lg:rounded-r-lg"
+      >
+        <AppLogoIcon class="h-full w-full" />
+      </div>
+    </main>
+  </div>
 </div>
