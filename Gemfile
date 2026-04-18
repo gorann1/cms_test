@@ -40,7 +40,7 @@ gem 'js-routes'
 # Testing
 gem 'rspec-rails'
 
-gem 'inertia_rails', '~> 3.18'
+gem 'inertia_rails', '~> 3.21'
 
 gem 'vite_rails', '~> 3.10'
 
